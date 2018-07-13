@@ -4,6 +4,7 @@ import torch
 from torch.autograd import Variable
 from PIL import Image
 from torchvision.transforms import ToTensor
+import os
 
 import numpy as np
 
@@ -59,5 +60,5 @@ out_img_cr = Image.fromarray(np.uint8(out_img_cr), mode='L')
 out_img = Image.merge('RGB', [out_img_y, out_img_cb, out_img_cr])
 #out_img = Image.merge('YCbCr', [out_img_y, out_img_cb, out_img_cr]).convert('RGB')
 
-out_img.save(opt.output_filename)
+out_img.save(os.path.join("output", opt.output_filename))
 print('output image saved to ', opt.output_filename)
